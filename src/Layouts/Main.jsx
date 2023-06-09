@@ -1,6 +1,7 @@
 import React from "react";
-import Navbar from "../Components/Navbar/Navbar";
 import { Outlet } from "react-router-dom";
+import Footer from "../Components/Shared/Footer/Footer";
+import Navbar from "../Components/Shared/Navbar/Navbar";
 
 const Main = () => {
   return (
@@ -9,6 +10,7 @@ const Main = () => {
       <div>
         <Outlet></Outlet>
       </div>
+      <Footer className="min-height-screen"></Footer>
     </div>
   );
 };
