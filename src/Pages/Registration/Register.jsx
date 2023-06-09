@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 const Register = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const handlePasswordToggle = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleConfirmPasswordToggle = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
   return (
     <div className="flex min-h-full flex-col justify-center px-6  lg:px-8 w-2/3 mx-auto py-5 mt-5 mb-10 border">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -31,7 +43,7 @@ const Register = () => {
                 type="text"
                 autocomplete="name"
                 required
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -49,7 +61,7 @@ const Register = () => {
                 type="email"
                 autocomplete="email"
                 required
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -62,15 +74,25 @@ const Register = () => {
                 Password
               </label>
             </div>
-            <div className="mt-2">
+            <div className="mt-2 relative">
               <input
                 id="password"
                 name="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 autocomplete="current-password"
                 required
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
+              <span
+                onClick={handlePasswordToggle}
+                className="absolute inset-y-0 right-3 pl-3 flex items-center"
+              >
+                {showPassword ? (
+                  <AiOutlineEye></AiOutlineEye>
+                ) : (
+                  <AiOutlineEyeInvisible></AiOutlineEyeInvisible>
+                )}
+              </span>
             </div>
           </div>
           <div>
@@ -82,15 +104,25 @@ const Register = () => {
                 Confirm Password
               </label>
             </div>
-            <div className="mt-2">
+            <div className="mt-2 relative">
               <input
                 id="cpassword"
                 name="cpassword"
-                type="password"
+                type={showConfirmPassword ? "text" : "password"}
                 autocomplete="confirm-password"
                 required
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
+              <span
+                onClick={handleConfirmPasswordToggle}
+                className="absolute inset-y-0 right-3 pl-3 flex items-center"
+              >
+                {showConfirmPassword ? (
+                  <AiOutlineEye></AiOutlineEye>
+                ) : (
+                  <AiOutlineEyeInvisible></AiOutlineEyeInvisible>
+                )}
+              </span>
             </div>
           </div>
           <div>
@@ -107,7 +139,7 @@ const Register = () => {
                 type="text"
                 autocomplete="phptoUrl"
                 required
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
