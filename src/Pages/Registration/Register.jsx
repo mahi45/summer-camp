@@ -1,10 +1,77 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { toast } from "react-hot-toast";
+import { ImSpinner } from "react-icons/im";
+import { FaGoogle } from "react-icons/fa";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const {
+    loading,
+    setLoading,
+    signIn,
+    signInWithGoogle,
+    updateUserProfile,
+    createUser,
+  } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  // Handle Submit
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    const cpassword = event.target.cpassword.value;
+    const photoUrl = event.target.photoUrl.value;
+    console.log(name, email, password, cpassword, photoUrl);
+
+    if (password !== cpassword) {
+      toast.error("Password Not matched");
+    } else if (!/[A-Z]/.test(password)) {
+      toast.error("Please enter one capital letter");
+    } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      toast.error("Please enter one special letter");
+    } else {
+      createUser(email, password)
+        .then(() => {
+          updateUserProfile(name, photoUrl)
+            .then(() => {
+              toast.success("Signup Successful");
+              navigate(from, { replace: true });
+            })
+            .catch((error) => {
+              setLoading(false);
+              console.log(error.message);
+              toast.error(error.message);
+            });
+        })
+        .catch((err) => {
+          setLoading(false);
+          console.log(err.message);
+          toast.error(err.message);
+        });
+    }
+  };
+
+  // Handle Google Sign In
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error.message);
+        toast.error(error.message);
+      });
+  };
 
   const handlePasswordToggle = () => {
     setShowPassword(!showPassword);
@@ -28,7 +95,7 @@ const Register = () => {
       </div>
 
       <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label
               for="name"
@@ -163,6 +230,18 @@ const Register = () => {
             Login
           </Link>
         </p>
+        <div className="flex items-center my-4">
+          <div className="flex-grow border-t border-gray-300"></div>
+          <span className="px-3 text-gray-500">Or continue with</span>
+          <div className="flex-grow border-t border-gray-300"></div>
+        </div>
+        <button
+          onClick={handleGoogleSignIn}
+          className="flex items-center justify-center gap-2 p-2 rounded-lg mt-3 mx-auto bg-black text-white w-2/3"
+        >
+          <FaGoogle className="" />
+          Google
+        </button>
         <p className="text-red-500 text-lg text-center my-2"></p>
       </div>
     </div>

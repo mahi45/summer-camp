@@ -1,14 +1,51 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { toast } from "react-hot-toast";
+import { ImSpinner } from "react-icons/im";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { loading, setLoading, signIn, signInWithGoogle } =
+    useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handlePasswordToggle = () => {
     setShowPassword(!showPassword);
   };
+
+  // Handle Submit
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    signIn(email, password)
+      .then(() => {
+        toast.success("Login Successful");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        setLoading(false);
+        toast.error(error.message);
+      });
+  };
+
+  // Handle Google Sign In
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        setLoading(false);
+        toast.error(error.message);
+      });
+  };
+
   return (
     <>
       <div className="flex min-h-full flex-col justify-center px-6  lg:px-8 w-2/3 mx-auto py-5 mt-5 mb-10 border">
@@ -24,7 +61,7 @@ const Login = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label
                 for="email"
@@ -39,7 +76,7 @@ const Login = () => {
                   type="email"
                   autocomplete="email"
                   required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -80,7 +117,11 @@ const Login = () => {
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Sign in
+                {loading ? (
+                  <ImSpinner className="animate-spin"></ImSpinner>
+                ) : (
+                  "Sign in"
+                )}
               </button>
             </div>
           </form>
@@ -99,7 +140,10 @@ const Login = () => {
             <span className="px-3 text-gray-500">Or continue with</span>
             <div className="flex-grow border-t border-gray-300"></div>
           </div>
-          <button className="flex items-center justify-center gap-2 p-2 rounded-lg mt-3 mx-auto bg-black text-white w-2/3">
+          <button
+            onClick={handleGoogleSignIn}
+            className="flex items-center justify-center gap-2 p-2 rounded-lg mt-3 mx-auto bg-black text-white w-2/3"
+          >
             <FaGoogle className="" />
             Google
           </button>
