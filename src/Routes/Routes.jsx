@@ -45,6 +45,10 @@ export const router = createBrowserRouter([
         path: "/dashboard/all-user",
         element: <AllUser></AllUser>,
       },
+      {
+        path: "/dashboard/my-classes",
+        element: <AllUser></AllUser>,
+      },
     ],
   },
 ]);

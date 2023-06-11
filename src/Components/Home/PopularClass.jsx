@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import { getAllClass } from "../../api/class";
-import Card from "../Classes/Card";
+import Card from "./Card";
 
 const PopularClass = () => {
   const [myClass, setMyClass] = useState([]);

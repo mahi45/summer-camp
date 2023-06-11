@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card = ({ allClass }) => {
+const AllClass = ({ allClass }) => {
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
@@ -19,4 +19,4 @@ const Card = ({ allClass }) => {
   );
 };
 
-export default Card;
+export default AllClass;

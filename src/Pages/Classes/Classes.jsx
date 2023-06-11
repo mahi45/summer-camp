@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 import { getAllClass } from "../../api/class";
-import AllClass from "../../Components/Classes/AllClass";
+import AllClass from "./AllClass";
 
 const Classes = () => {
   const [allClass, setAllClass] = useState([]);
