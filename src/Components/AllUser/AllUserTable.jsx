@@ -1,14 +1,23 @@
 import React, { useContext, useState } from "react";
-import AdminModal from "../Modal/AdminModal";
-import { becomeAdmin } from "../../api/auth";
+import InstructorModal from "../Modal/InstructorModal";
+import { becomeAdmin, becomeInstructor } from "../../api/auth";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../../Providers/AuthProvider";
+import AdminModal from "../Modal/AdminModal";
 
 const AllUserTable = ({ user }) => {
   const { role, setRole } = useContext(AuthContext);
   const [modal, setModal] = useState(false);
 
   const modalHandler = (email) => {
+    becomeInstructor(email).then((data) => {
+      console.log(data);
+      toast.success("You are now instructor!");
+      setRole("instructor");
+      closeModal();
+    });
+  };
+  const adminModalHandler = (email) => {
     becomeAdmin(email).then((data) => {
       console.log(data);
       toast.success("You are now admin!");
@@ -23,55 +32,38 @@ const AllUserTable = ({ user }) => {
 
   return (
     <div>
-      <div className="overflow-x-auto">
-        <table className="table">
-          {/* head */}
-
-          <tbody>
-            {/* row 1 */}
-            <tr>
-              <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
-              </th>
-              <td>
-                <div className="flex items-center space-x-3">
-                  {/* <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img
-                        src={user.photoURL}
-                        alt="Avatar Tailwind CSS Component"
-                      />
-                    </div>
-                  </div> */}
-                  <div>
-                    <div className="font-bold">{user.email}</div>
-                  </div>
-                </div>
-              </td>
-              <td className="">
-                <button className="btn btn-outline btn-secondary mr-3">
-                  Make Instructor
-                </button>
-                {role && role == "admin" && (
-                  <button
-                    onClick={() => setModal(true)}
-                    className="btn btn-outline btn-accent"
-                    disabled
-                  >
-                    Make Admin
-                  </button>
-                )}
-              </td>
-            </tr>
-          </tbody>
-          {/* foot */}
-        </table>
-      </div>
-      <AdminModal
+      <tr>
+        <td>
+          <label>
+            <input type="checkbox" className="checkbox" />
+          </label>
+        </td>
+        <td>{user.email}</td>
+        <td className="">
+          <button
+            onClick={() => setModal(true)}
+            className="btn btn-outline btn-secondary mr-3"
+            disabled={role == "instructor"}
+          >
+            Make Instructor
+          </button>
+          <button
+            onClick={() => setModal(true)}
+            className="btn btn-outline btn-accent"
+          >
+            Make Admin
+          </button>
+        </td>
+      </tr>
+      <InstructorModal
         email={user?.email}
         modalHandler={modalHandler}
+        isOpen={modal}
+        closeModal={closeModal}
+      ></InstructorModal>
+      <AdminModal
+        email={user?.email}
+        adminModalHandler={adminModalHandler}
         isOpen={modal}
         closeModal={closeModal}
       ></AdminModal>

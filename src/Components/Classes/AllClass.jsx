@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { getAllUser } from "../../api/auth";
-import AllUserTable from "./AllUserTable";
+import { getAllClass } from "../../api/class";
+import AllClassTable from "./AllClassTable";
 import SectionTitle from "../SectionTitle/SectionTitle";
 
-const AllUser = () => {
-  const [user, setAllUser] = useState();
+const AllClass = () => {
+  const [myclass, setMyAllClass] = useState();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    getAllUser()
+    getAllClass()
       .then((data) => {
-        setAllUser(data);
+        setMyAllClass(data);
         setLoading(false);
       })
       .catch((err) => console.log(err));
@@ -20,23 +20,24 @@ const AllUser = () => {
   return (
     <div>
       <h2>All User</h2>
-      {user && user.length > 0 ? (
-        <div className="overflow-x-auto">
+      {myclass && myclass.length > 0 ? (
+        <div className="grid md:grid-cols-1 gap-3">
           <table className="table">
+            {/* head */}
             <thead>
               <tr>
-                <th>
-                  <label>
-                    <input type="checkbox" className="checkbox" />
-                  </label>
-                </th>
-                <th>Email</th>
+                <th>#</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Total Enrolled Students</th>
+                <th>Feedback</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              {user.map((user, index) => (
-                <AllUserTable key={index} user={user} />
+              {myclass.map((myclass, index) => (
+                <AllClassTable key={index} index={index} myclass={myclass} />
               ))}
             </tbody>
           </table>
@@ -54,4 +55,4 @@ const AllUser = () => {
   );
 };
 
-export default AllUser;
+export default AllClass;

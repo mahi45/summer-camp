@@ -3,12 +3,14 @@ import AddClassForm from "../../Components/Forms/AddClassForm";
 import { imageUpload } from "../../api/utils";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { addClass } from "../../api/class";
+import { toast } from "react-hot-toast";
 
 const AddClass = () => {
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [uploadButtonText, setUploadButtonText] =
     useState("Upload Class Image");
+
   const handleSubmit = (event) => {
     setLoading(true);
     event.preventDefault();
@@ -40,8 +42,11 @@ const AddClass = () => {
 
         //   Post class data to server
         addClass(classData)
-          .then((data) => console.log(data))
+          .then((data) => {
+            toast.success("Class added successfully");
+          })
           .catch((err) => {
+            toast.error("There is some issue to add your class");
             console.log(err.message);
           });
 

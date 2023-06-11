@@ -1,6 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-const AdminModal = ({ adminModalHandler, closeModal, isOpen, email }) => {
+const InstructorModal = ({ modalHandler, closeModal, isOpen, email }) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -32,12 +32,12 @@ const AdminModal = ({ adminModalHandler, closeModal, isOpen, email }) => {
                   as="h3"
                   className="text-lg font-medium text-center leading-6 text-gray-900"
                 >
-                  Become A Host!
+                  Become A Instructor!
                 </Dialog.Title>
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">
                     Please read all the terms & conditions before becoming a
-                    host.
+                    instructor.
                   </p>
                 </div>
                 <hr className="mt-8 " />
@@ -45,7 +45,7 @@ const AdminModal = ({ adminModalHandler, closeModal, isOpen, email }) => {
                   <button
                     type="button"
                     className="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
-                    onClick={() => adminModalHandler(email)}
+                    onClick={() => modalHandler(email)}
                   >
                     Continue
                   </button>
@@ -66,4 +66,4 @@ const AdminModal = ({ adminModalHandler, closeModal, isOpen, email }) => {
   );
 };
 
-export default AdminModal;
+export default InstructorModal;

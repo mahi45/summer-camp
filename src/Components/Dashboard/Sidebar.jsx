@@ -5,12 +5,14 @@ import { GrLogout } from "react-icons/gr";
 import { FcSettings } from "react-icons/fc";
 import { AiOutlineBars } from "react-icons/ai";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { BsFillHouseAddFill } from "react-icons/bs";
+import InstructorMenu from "./InstructorMenu";
+import AdminMenu from "./AdminMenu";
 
 const Sidebar = () => {
   const navigate = useNavigate();
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, role } = useContext(AuthContext);
   const [isActive, setActive] = useState("false");
+  console.log(user);
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
@@ -79,52 +81,22 @@ const Sidebar = () => {
             <nav>
               <>
                 <NavLink>
-                  <p>Admin Dashboard</p>
-                </NavLink>
-                <NavLink>
-                  <p>Instructor Dashboard</p>
-                </NavLink>
-                <NavLink>
-                  <p>Student Dashboard</p>
+                  {role == "instructor" ? (
+                    <p>
+                      Instructor Dashboard
+                      <InstructorMenu></InstructorMenu>
+                    </p>
+                  ) : role == "admin" ? (
+                    <p>
+                      Admin Dashboard
+                      <AdminMenu></AdminMenu>
+                    </p>
+                  ) : (
+                    <p>Student Dashboard</p>
+                  )}
                 </NavLink>
 
                 {/* Menu Links */}
-                <NavLink
-                  to="/dashboard/add-class"
-                  className={({ isActive }) =>
-                    `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                      isActive ? "bg-gray-300  text-gray-700" : "text-gray-600"
-                    }`
-                  }
-                >
-                  <BsFillHouseAddFill className="w-5 h-5" />
-
-                  <span className="mx-4 font-medium">Add Class</span>
-                </NavLink>
-                <NavLink
-                  to="/dashboard/my-classes"
-                  className={({ isActive }) =>
-                    `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                      isActive ? "bg-gray-300  text-gray-700" : "text-gray-600"
-                    }`
-                  }
-                >
-                  <BsFillHouseAddFill className="w-5 h-5" />
-
-                  <span className="mx-4 font-medium">My Classes</span>
-                </NavLink>
-                <NavLink
-                  to="/dashboard/all-user"
-                  className={({ isActive }) =>
-                    `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                      isActive ? "bg-gray-300  text-gray-700" : "text-gray-600"
-                    }`
-                  }
-                >
-                  <BsFillHouseAddFill className="w-5 h-5" />
-
-                  <span className="mx-4 font-medium">All User</span>
-                </NavLink>
               </>
             </nav>
           </div>

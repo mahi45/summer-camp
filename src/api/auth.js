@@ -15,6 +15,20 @@ export const saveUser = (user) => {
 };
 
 // Become a instructor
+export const becomeInstructor = (email) => {
+  const currentUser = {
+    role: "instructor",
+  };
+  return fetch(`${import.meta.env.VITE_API_URL}/users/${email}`, {
+    method: "PUT",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(currentUser),
+  }).then((res) => res.json());
+};
+
+// Become a admin
 export const becomeAdmin = (email) => {
   const currentUser = {
     role: "admin",

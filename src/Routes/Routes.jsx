@@ -8,6 +8,7 @@ import DashboardLayout from "../Layouts/DashboardLayout";
 import AddClass from "../Pages/Dashboard/AddClass";
 import Classes from "../Pages/Classes/Classes";
 import AllUser from "../Components/AllUser/AllUser";
+import AllClass from "../Components/Classes/AllClass";
 
 export const router = createBrowserRouter([
   {
@@ -47,7 +48,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/my-classes",
-        element: <AllUser></AllUser>,
+        element: <AllClass></AllClass>,
       },
     ],
   },
