@@ -2,7 +2,7 @@ import React from "react";
 
 const Instructors = () => {
   return (
-    <div className="grid grid-cols-3 gap-3">
+    <div className="grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-3">
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure>
           <img src="https://i.ibb.co/dPsHyCp/Banner1.png" alt="Shoes" />

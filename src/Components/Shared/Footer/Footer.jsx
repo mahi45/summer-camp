@@ -46,7 +46,7 @@ const Footer = () => {
           />
           <p>Copyright © 2023 - All right reserved</p>
         </div>
-        <div className="grid-flow-col gap-4">
+        <div className="grid-flow-col gap-4 items-end justify-items-end">
           <a className="text-xl">
             <FaYoutube></FaYoutube>
           </a>

@@ -12,7 +12,6 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const { user, logOut, role } = useContext(AuthContext);
   const [isActive, setActive] = useState("false");
-  console.log(user);
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
