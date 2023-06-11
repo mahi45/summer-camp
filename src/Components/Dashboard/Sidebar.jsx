@@ -9,17 +9,14 @@ import { BsFillHouseAddFill } from "react-icons/bs";
 
 const Sidebar = () => {
   const navigate = useNavigate();
-  const [toggle, setToggle] = useState(false);
   const { user, logOut } = useContext(AuthContext);
-
   const [isActive, setActive] = useState("false");
-  const toggleHandler = (event) => {
-    setToggle(event.target.checked);
-  };
+
   // Sidebar Responsive Handler
   const handleToggle = () => {
     setActive(!isActive);
   };
+
   const handleLogOut = () => {
     logOut();
     navigate("/");
@@ -81,23 +78,16 @@ const Sidebar = () => {
           <div className="flex flex-col justify-between flex-1 mt-6">
             <nav>
               <>
-                <label
-                  htmlFor="Toggle3"
-                  className="inline-flex w-full justify-center items-center px-2 rounded-md cursor-pointer text-gray-800"
-                >
-                  <input
-                    onChange={toggleHandler}
-                    id="Toggle3"
-                    type="checkbox"
-                    className="hidden peer"
-                  />
-                  <span className="px-4 py-1 rounded-l-md bg-rose-400 peer-checked:bg-gray-300">
-                    Admin
-                  </span>
-                  <span className="px-4 py-1 rounded-r-md bg-gray-300 peer-checked:bg-rose-400">
-                    Instructor
-                  </span>
-                </label>
+                <NavLink>
+                  <p>Admin Dashboard</p>
+                </NavLink>
+                <NavLink>
+                  <p>Instructor Dashboard</p>
+                </NavLink>
+                <NavLink>
+                  <p>Student Dashboard</p>
+                </NavLink>
+
                 {/* Menu Links */}
                 <NavLink
                   to="/dashboard/add-class"
@@ -110,6 +100,18 @@ const Sidebar = () => {
                   <BsFillHouseAddFill className="w-5 h-5" />
 
                   <span className="mx-4 font-medium">Add Class</span>
+                </NavLink>
+                <NavLink
+                  to="/dashboard/all-user"
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
+                      isActive ? "bg-gray-300  text-gray-700" : "text-gray-600"
+                    }`
+                  }
+                >
+                  <BsFillHouseAddFill className="w-5 h-5" />
+
+                  <span className="mx-4 font-medium">All User</span>
                 </NavLink>
               </>
             </nav>

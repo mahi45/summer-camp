@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import { getAllClass } from "../../api/class";
-import { useSearchParams } from "react-router-dom";
 import Card from "../Classes/Card";
 
 const PopularClass = () => {
-  // const [params, setParams] = useSearchParams();
-  // const className = params.get("className");
-  // console.log(className);
   const [myClass, setMyClass] = useState([]);
   const [loading, setLoading] = useState(false);
 

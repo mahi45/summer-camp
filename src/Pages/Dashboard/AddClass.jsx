@@ -17,6 +17,7 @@ const AddClass = () => {
     const instructorEmail = event.target.instructorEmail.value;
     const seats = event.target.seats.value;
     const price = event.target.price.value;
+    const status = event.target.status.value;
     const image = event.target.image.files[0];
 
     // upload image
@@ -28,6 +29,7 @@ const AddClass = () => {
           instructorEmail,
           seats,
           price,
+          status,
           image: data.data.display_url,
           host: {
             name: user?.displayName,

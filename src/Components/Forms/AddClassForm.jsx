@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { TbFidgetSpinner } from "react-icons/tb";
+import { AuthContext } from "../../Providers/AuthProvider";
 const AddClassForm = ({
   handleSubmit,
   loading,
   handleImageChange,
   uploadButtonText,
 }) => {
+  const { user } = useContext(AuthContext);
   return (
     <div className="w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
       <form onSubmit={handleSubmit}>
@@ -59,6 +61,8 @@ const AddClassForm = ({
                   type="text"
                   placeholder="Instructor Name"
                   required
+                  defaultValue={user?.displayName}
+                  readOnly
                 />
               </div>
 
@@ -76,6 +80,8 @@ const AddClassForm = ({
                   type="text"
                   placeholder="Instructor Email"
                   required
+                  defaultValue={user?.email}
+                  readOnly
                 />
               </div>
             </div>
@@ -106,6 +112,21 @@ const AddClassForm = ({
                   type="number"
                   placeholder="price"
                   required
+                />
+              </div>
+              <div className="space-y-1 text-sm">
+                <label htmlFor="status" className="block text-gray-600">
+                  Status
+                </label>
+                <input
+                  className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
+                  name="status"
+                  id="status"
+                  type="text"
+                  placeholder="price"
+                  required
+                  defaultValue={"Pending"}
+                  readOnly
                 />
               </div>
             </div>

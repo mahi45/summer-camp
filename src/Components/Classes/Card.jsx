@@ -1,14 +1,14 @@
 import React from "react";
 
-const Card = () => {
+const Card = ({ myClass }) => {
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
-        <img src="https://i.ibb.co/dPsHyCp/Banner1.png" alt="Shoes" />
+        <img src={myClass.image} alt="Shoes" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">Shoes!</h2>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
+        <h2 className="card-title">{myClass.className}</h2>
+        <p>{myClass.instructorName}</p>
         <div className="card-actions justify-end">
           <button className="btn btn-primary">Buy Now</button>
         </div>
