@@ -21,22 +21,19 @@ const AllUser = () => {
     <div>
       <h2>All User</h2>
       {user && user.length > 0 ? (
-        <div className="overflow-x-auto">
+        <div>
           <table className="table">
+            {/* head */}
             <thead>
               <tr>
-                <th>
-                  <label>
-                    <input type="checkbox" className="checkbox" />
-                  </label>
-                </th>
+                <th>#</th>
                 <th>Email</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
               {user.map((user, index) => (
-                <AllUserTable key={index} user={user} />
+                <AllUserTable key={index} index={index} user={user} />
               ))}
             </tbody>
           </table>

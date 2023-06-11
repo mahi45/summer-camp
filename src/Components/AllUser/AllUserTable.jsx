@@ -5,11 +5,13 @@ import { toast } from "react-hot-toast";
 import { AuthContext } from "../../Providers/AuthProvider";
 import AdminModal from "../Modal/AdminModal";
 
-const AllUserTable = ({ user }) => {
+const AllUserTable = ({ user, index }) => {
   const { role, setRole } = useContext(AuthContext);
+  // const { adminRole, setAdminRole } = useContext(AuthContext);
   const [modal, setModal] = useState(false);
+  const [adminModal, setAdminModal] = useState(false);
 
-  const modalHandler = (email) => {
+  const instructorModalHandler = (email) => {
     becomeInstructor(email).then((data) => {
       console.log(data);
       toast.success("You are now instructor!");
@@ -22,33 +24,33 @@ const AllUserTable = ({ user }) => {
       console.log(data);
       toast.success("You are now admin!");
       setRole("admin");
-      closeModal();
+      adminCloseModal();
     });
   };
 
   const closeModal = () => {
     setModal(false);
   };
+  const adminCloseModal = () => {
+    setAdminModal(false);
+  };
 
   return (
-    <div>
+    <>
       <tr>
-        <td>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </td>
+        <td>{index + 1}</td>
         <td>{user.email}</td>
-        <td className="">
+        <td>
           <button
-            onClick={() => setModal(true)}
+            onClick={() => {
+              setModal(true);
+            }}
             className="btn btn-outline btn-secondary mr-3"
-            disabled={role == "instructor"}
           >
             Make Instructor
           </button>
           <button
-            onClick={() => setModal(true)}
+            onClick={() => setAdminModal(true)}
             className="btn btn-outline btn-accent"
           >
             Make Admin
@@ -57,17 +59,17 @@ const AllUserTable = ({ user }) => {
       </tr>
       <InstructorModal
         email={user?.email}
-        modalHandler={modalHandler}
+        instructorModalHandler={instructorModalHandler}
         isOpen={modal}
         closeModal={closeModal}
       ></InstructorModal>
       <AdminModal
         email={user?.email}
         adminModalHandler={adminModalHandler}
-        isOpen={modal}
-        closeModal={closeModal}
+        isOpen={adminModal}
+        adminCloseModal={adminCloseModal}
       ></AdminModal>
-    </div>
+    </>
   );
 };
 
