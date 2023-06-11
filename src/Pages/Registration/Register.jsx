@@ -5,6 +5,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import { toast } from "react-hot-toast";
 import { ImSpinner } from "react-icons/im";
 import { FaGoogle } from "react-icons/fa";
+import { saveUser } from "../../api/auth";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -43,6 +44,8 @@ const Register = () => {
           updateUserProfile(name, photoUrl)
             .then(() => {
               toast.success("Signup Successful");
+              //save user to db
+              saveUser(result.user);
               navigate(from, { replace: true });
             })
             .catch((error) => {
@@ -64,6 +67,8 @@ const Register = () => {
     signInWithGoogle()
       .then((result) => {
         console.log(result.user);
+        // save user to db
+        saveUser(result.user);
         navigate(from, { replace: true });
       })
       .catch((error) => {

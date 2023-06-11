@@ -5,6 +5,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { toast } from "react-hot-toast";
 import { ImSpinner } from "react-icons/im";
+import { saveUser } from "../../api/auth";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -38,6 +39,8 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
+        // save user to db
+        saveUser(result.user);
         navigate(from, { replace: true });
       })
       .catch((error) => {
