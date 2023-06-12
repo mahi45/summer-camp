@@ -11,8 +11,8 @@
 
 ### Code Link
 
-Client Side: https://github.com/programming-hero-web-course1/b712-summer-camp-client-side-mahi45
-Server Side: https://github.com/programming-hero-web-course1/b7a12-summer-camp-server_side-mahi45
+- Client Side: https://github.com/programming-hero-web-course1/b712-summer-camp-client-side-mahi45
+- Server Side: https://github.com/programming-hero-web-course1/b7a12-summer-camp-server_side-mahi45
 
 ### Live Site Link
 
