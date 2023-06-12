@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 import { getAllInstructor } from "../../api/instructor";
 import AllInstructor from "./AllInstructor";
 
@@ -19,13 +18,6 @@ const Instructors = () => {
 
   return (
     <div>
-      <div className="py-6 bg-emerald-50">
-        <SectionTitle
-          title="All Instructor"
-          subtitle="All instructor for the sportscamp"
-          center
-        ></SectionTitle>
-      </div>
       <div className="p-4 border gap-6">
         {allInstructor && allInstructor.length > 0 ? (
           <div className="grid md:grid-cols-3 gap-3">

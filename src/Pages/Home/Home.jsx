@@ -19,7 +19,7 @@ const Home = () => {
       <PopularClass></PopularClass>
       <div className="py-6 bg-emerald-50">
         <SectionTitle
-          title="Instructors"
+          title="Popular Instructors"
           subtitle="Your most loved instructors"
           center
         ></SectionTitle>
