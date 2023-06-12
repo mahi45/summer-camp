@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { BsFillHouseAddFill, BsFingerprint } from "react-icons/bs";
-import { GrUserAdmin } from "react-icons/gr";
+import { FaUsers } from "react-icons/fa";
 
 const AdminMenu = () => {
   return (
@@ -13,7 +12,7 @@ const AdminMenu = () => {
           }`
         }
       >
-        <BsFillHouseAddFill className="w-5 h-5" />
+        <FaUsers className="w-5 h-5" />
 
         <span className="mx-4 font-medium">All User</span>
       </NavLink>
