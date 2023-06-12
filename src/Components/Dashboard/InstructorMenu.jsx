@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { BsFillHouseAddFill, BsFingerprint } from "react-icons/bs";
-import { GrUserAdmin } from "react-icons/gr";
+import { VscSymbolClass } from "react-icons/vsc";
+import { AiFillAppstore } from "react-icons/ai";
 
 const InstructorMenu = () => {
   return (
@@ -13,7 +13,7 @@ const InstructorMenu = () => {
           }`
         }
       >
-        <BsFillHouseAddFill className="w-5 h-5" />
+        <VscSymbolClass className="w-5 h-5" />
 
         <span className="mx-4 font-medium">Add Class</span>
       </NavLink>
@@ -26,7 +26,7 @@ const InstructorMenu = () => {
           }`
         }
       >
-        <BsFillHouseAddFill className="w-5 h-5" />
+        <AiFillAppstore className="w-5 h-5" />
 
         <span className="mx-4 font-medium">My Classes</span>
       </NavLink>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useRouteError } from "react-router-dom";
+import { Link, NavLink, useRouteError } from "react-router-dom";
 import { FaceFrownIcon } from "@heroicons/react/24/solid";
 
 const ErrorPage = () => {
@@ -14,11 +14,11 @@ const ErrorPage = () => {
         </h2>
         <p className="text-xl mb-2">{error?.message}</p>
 
-        <button className="btn btn-accent my-6">
-          <Link to="/" className="text-white">
-            Back to Summer Camp
-          </Link>
-        </button>
+        <NavLink to="/">
+          <button className="btn btn-accent my-6">
+            <Link className="text-white">Back to Summer Camp</Link>
+          </button>
+        </NavLink>
       </div>
     </section>
   );
