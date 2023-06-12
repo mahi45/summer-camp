@@ -34,10 +34,6 @@ const AllUserTable = ({ user, index }) => {
     setAdminModal(false);
   };
 
-  const isButtonDisables = () => {
-    return role === "instructor" && rowIndex % 2 === 0;
-  };
-
   return (
     <>
       <tr>
@@ -49,14 +45,12 @@ const AllUserTable = ({ user, index }) => {
             onClick={() => {
               setModal(true);
             }}
-            disabled={isButtonDisables()}
             className="btn btn-outline btn-secondary mr-3"
           >
             Make Instructor
           </button>
           <button
             onClick={() => setAdminModal(true)}
-            disabled={role === "admin" ? true : false}
             className="btn btn-outline btn-accent"
           >
             Make Admin

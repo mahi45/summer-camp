@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 py-6">
+    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 py-2 border">
       <div className="space-y-2 items-center order-2 md:order-1 p-6 md:p-6">
         <p>LEARN MORE</p>
         <h1 className="text-5xl">ABOUT CLUB</h1>

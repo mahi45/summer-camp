@@ -1,35 +1,36 @@
 import React, { useEffect, useState } from "react";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
-import { getAllClass } from "../../api/class";
-import AllClass from "./AllClass";
+import { getAllInstructor } from "../../api/instructor";
+import AllInstructor from "./AllInstructor";
 
-const Classes = () => {
-  const [allClass, setAllClass] = useState([]);
+const Instructors = () => {
+  const [allInstructor, setAllinstructor] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    getAllClass()
+    getAllInstructor()
       .then((data) => {
-        setAllClass(data);
+        setAllinstructor(data);
         setLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
+
   return (
     <div>
       <div className="py-6 bg-emerald-50">
         <SectionTitle
-          title="All Class"
-          subtitle="All instructor class"
+          title="All Instructor"
+          subtitle="All instructor for the sportscamp"
           center
         ></SectionTitle>
       </div>
       <div className="p-4 border gap-6">
-        {allClass && allClass.length > 0 ? (
+        {allInstructor && allInstructor.length > 0 ? (
           <div className="grid md:grid-cols-3 gap-3">
-            {allClass.map((allClass, index) => (
-              <AllClass key={index} allClass={allClass} />
+            {allInstructor.map((allInstructor, index) => (
+              <AllInstructor key={index} allInstructor={allInstructor} />
             ))}
           </div>
         ) : (
@@ -46,4 +47,4 @@ const Classes = () => {
   );
 };
 
-export default Classes;
+export default Instructors;
