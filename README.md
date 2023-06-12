@@ -17,4 +17,4 @@ Server Side: https://github.com/programming-hero-web-course1/b7a12-summer-camp-s
 ### Live Site Link
 
 - Client: https://summercamp-273b8.web.app/
-- Admin Email and Pass:
+- Admin Email and Pass: mahi@gmail.com, 123456A#
