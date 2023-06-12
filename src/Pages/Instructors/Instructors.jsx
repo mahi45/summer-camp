@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getAllInstructor } from "../../api/instructor";
 import AllInstructor from "./AllInstructor";
+import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 
 const Instructors = () => {
   const [allInstructor, setAllinstructor] = useState([]);
@@ -20,7 +21,7 @@ const Instructors = () => {
     <div>
       <div className="p-4 border gap-6">
         {allInstructor && allInstructor.length > 0 ? (
-          <div className="grid md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 justify-items-center">
             {allInstructor.map((allInstructor, index) => (
               <AllInstructor key={index} allInstructor={allInstructor} />
             ))}
