@@ -9,8 +9,8 @@ const Card = ({ myClass }) => {
       <div className="card-body">
         <h2 className="card-title">{myClass.className}</h2>
         <p>{myClass.instructorName}</p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+        <div className="card-actions justify-start">
+          <button className="btn btn-primary">Select Class</button>
         </div>
       </div>
     </div>
