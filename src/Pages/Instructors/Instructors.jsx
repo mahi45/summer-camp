@@ -36,8 +36,8 @@ const Instructors = () => {
         ) : (
           <div className="pt-12">
             <SectionTitle
-              title="No Rooms Available In This Category!"
-              subtitle="Please Select Other Categories."
+              title="No Instructors Available"
+              subtitle="Please create an instructor for class"
               center={true}
             />
           </div>
