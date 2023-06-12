@@ -9,12 +9,6 @@
 - Trying to maintain overall folder structure
 - Some of the new package installed and works in this project
 
-### Code Link
-
-- Client Side: https://github.com/programming-hero-web-course1/b712-summer-camp-client-side-mahi45
-- Server Side: https://github.com/programming-hero-web-course1/b7a12-summer-camp-server_side-mahi45
-
 ### Live Site Link
 
 - Client: https://summercamp-273b8.web.app/
-- Admin Email and Pass: mahi@gmail.com, 123456A#
