@@ -2,8 +2,8 @@ import React from "react";
 import Slider from "../../Components/Home/Slider";
 import PopularClass from "../../Components/Home/PopularClass";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
-import Instructors from "../../Components/Home/Instructors";
 import About from "../../Components/Home/About";
+import Instructors from "../../Pages/Instructors/Instructors";
 
 const Home = () => {
   return (
