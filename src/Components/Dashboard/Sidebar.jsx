@@ -51,7 +51,9 @@ const Sidebar = () => {
           <div>
             <div className="w-full hidden md:flex py-2 justify-center items-center mx-auto">
               {/* <Logo /> */}
-              <img src="https://i.ibb.co/znGVTBn/Logo.png" alt="" />
+              <Link to="/">
+                <img src="https://i.ibb.co/znGVTBn/Logo.png" alt="" />
+              </Link>
             </div>
             <div className="flex flex-col items-center mt-6 -mx-2">
               <Link to="/dashboard">
