@@ -42,8 +42,8 @@ const AllUser = () => {
       ) : (
         <div className="pt-12">
           <SectionTitle
-            title="No Rooms Available In This Category!"
-            subtitle="Please Select Other Categories."
+            title="No users Available"
+            subtitle="Please create an user"
             center={true}
           />
         </div>

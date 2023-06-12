@@ -93,7 +93,11 @@ const Sidebar = () => {
                       <AdminMenu></AdminMenu>
                     </p>
                   ) : (
-                    <p>Student Dashboard</p>
+                    <p>
+                      Dashboard
+                      <AdminMenu></AdminMenu>
+                      <InstructorMenu></InstructorMenu>
+                    </p>
                   )}
                 </NavLink>
 
